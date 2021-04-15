@@ -1,0 +1,7 @@
+project(graph_cudnn_combination)
+cmake_minimum_required(VERSION 3.13)
+find_package(CUDA QUIET REQUIRED)
+set(CMAKE_CXX_FLAGS "-std=c++11")
+aux_source_directory(. SRC_LIST)
+cuda_add_executable(${PROJECT_NAME} graph_cudnn.cu cudnn_activation.cc main.cc)
+target_link_libraries(${PROJECT_NAME} cudnn)
